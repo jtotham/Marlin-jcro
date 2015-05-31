@@ -2697,7 +2697,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define LED_PIN 13
 
  #define FAN_PIN 7
- #define FAN2_PIN 6
+ #define FAN2_PIN -1 // Normally Pin 6, disabled so fan2 can be used for cooling Steppers 
  #define PS_ON_PIN 12
  #define KILL_PIN -1
 
