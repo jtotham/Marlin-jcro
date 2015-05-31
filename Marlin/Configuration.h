@@ -75,10 +75,10 @@
 #define DELTA_SEGMENTS_PER_SECOND 200
 
 // Center-to-center distance of the holes in the diagonal push rods.
-#define DELTA_DIAGONAL_ROD 257.0 // mm
+#define DELTA_DIAGONAL_ROD 267.0 // mm
 
 // Horizontal offset from middle of printer to smooth rod center.
-#define DELTA_SMOOTH_ROD_OFFSET 135 // mm
+#define DELTA_SMOOTH_ROD_OFFSET 165 // mm
 
 // Horizontal offset of the universal joints on the end effector.
 #define DELTA_EFFECTOR_OFFSET 30.0 // mm
@@ -86,8 +86,11 @@
 // Horizontal offset of the universal joints on the carriages.
 #define DELTA_CARRIAGE_OFFSET 50.0 // mm
 
-// Horizontal distance bridged by diagonal push rods when effector is centered.
-#define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)
+//Fudge Factor for Tuning
+#define DELTA_FUDGE_FACTOR 5
+
+//Horizontal distance bridged by diagonal push rods when effector is centered.
+#define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)+DELTA_FUDGE_FACTOR
 
 // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
 #define DELTA_PRINTABLE_RADIUS 120.0
@@ -143,8 +146,8 @@
 // 147 is Pt100 with 4k7 pullup
 // 110 is Pt100 with 1k pullup (non standard)
 
-#define TEMP_SENSOR_0 1
-#define TEMP_SENSOR_1 -1
+#define TEMP_SENSOR_0 -1
+#define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 1
 #define TEMP_SENSOR_BED 0
 
@@ -168,7 +171,7 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define HEATER_0_MAXTEMP 350
+#define HEATER_0_MAXTEMP 275
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define BED_MAXTEMP 1000
@@ -179,8 +182,8 @@
 //#define HEATER_BED_DUTY_CYCLE_DIVIDER 4
 
 // If you want the M105 heater power reported in watts, define the BED_WATTS, and (shared for all extruders) EXTRUDER_WATTS
-//#define EXTRUDER_WATTS (12.0*12.0/6.7) //  P=I^2/R
-//#define BED_WATTS (12.0*12.0/1.1)      // P=I^2/R
+#define EXTRUDER_WATTS (12.0*12.0/6.7) //  P=I^2/R
+#define BED_WATTS (12.0*12.0/1.1)      // P=I^2/R
 
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
